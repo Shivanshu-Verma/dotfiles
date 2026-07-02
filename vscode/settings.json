@@ -5,14 +5,16 @@
   "editor.fontSize": 13,
   "editor.lineHeight": 1.6,
   "editor.renderWhitespace": "boundary",
-  "editor.rulers": [88, 120],
+  "editor.rulers": [
+    88,
+    120
+  ],
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs": "active",
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.formatOnSave": true,
   "editor.stickyScroll.enabled": true,
   "editor.minimap.enabled": false,
-
   // ---- Files ----
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
@@ -24,38 +26,34 @@
     "**/.mypy_cache": true,
     "**/.ruff_cache": true
   },
-
   // ---- Terminal ----
   "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
   "terminal.integrated.fontSize": 13,
   "terminal.integrated.defaultProfile.osx": "zsh",
-
   // ---- Workbench ----
   "workbench.editor.enablePreview": false,
   "workbench.startupEditor": "none",
   "explorer.confirmDragAndDrop": false,
-
   // ---- Git ----
   "git.autofetch": true,
   "git.confirmSync": false,
   "diffEditor.ignoreTrimWhitespace": false,
-
+  "git.enableSmartCommit": true,
   // ---- Language: Python ----
   "python.analysis.typeCheckingMode": "basic",
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff",
-    "editor.codeActionsOnSave": { "source.organizeImports": "explicit" }
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
   },
-
   // ---- Language: Go ----
   "[go]": {
     "editor.defaultFormatter": "golang.go",
     "editor.formatOnSave": true
   },
   "go.useLanguageServer": true,
-
   // ---- Telemetry off ----
   "telemetry.telemetryLevel": "off",
-  "redhat.telemetry.enabled": false,
-  "git.enableSmartCommit": true
+  "redhat.telemetry.enabled": false
 }
