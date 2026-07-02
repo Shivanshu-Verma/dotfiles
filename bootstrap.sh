@@ -3,7 +3,7 @@
 # dotfiles checkout, then hands off to install.sh.
 #
 #   Run on a fresh machine:
-#     /bin/bash -c "$(curl -fsSL <raw-url>/bootstrap.sh)"
+#     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Shivanshu-Verma/dotfiles/main/bootstrap.sh)"
 #   or, if you've already cloned:
 #     ./bootstrap.sh
 set -euo pipefail

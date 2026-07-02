@@ -16,7 +16,7 @@ also works on Apple Silicon.
 
 ## Quickstart (existing machine)
 ```bash
-git clone <your-fork> ~/dotfiles      # or: it's already here
+git clone https://github.com/Shivanshu-Verma/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 ./install.sh                          # symlinks config, backs up originals
 bash scripts/security-setup.sh        # SSH key + Keychain (one-time)
@@ -26,7 +26,7 @@ bash scripts/doctor.sh                # validate
 
 ## Fresh machine
 ```bash
-/bin/bash -c "$(curl -fsSL <raw-url>/bootstrap.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Shivanshu-Verma/dotfiles/main/bootstrap.sh)"
 ```
 `bootstrap.sh` installs CLT + Homebrew, clones this repo, and runs `install.sh`.
 

@@ -97,12 +97,12 @@ built arch-aware:
 xcode-select --install
 
 # 3. Bootstrap: installs Homebrew, clones dotfiles, links everything.
-#    Push this repo to GitHub first, then update REPO= in bootstrap.sh.
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/<you>/dotfiles/main/bootstrap.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Shivanshu-Verma/dotfiles/main/bootstrap.sh)"
 #    (bootstrap prompts to run `brew bundle` and security-setup — say yes)
 
 # --- if you didn't use bootstrap, do it manually: ---
-git clone git@github.com:<you>/dotfiles.git ~/dotfiles
+# HTTPS clone works before your SSH key exists; switch to SSH after step 5.
+git clone https://github.com/Shivanshu-Verma/dotfiles.git ~/dotfiles
 cd ~/dotfiles && brew bundle --file Brewfile && ./install.sh
 
 # 4. Git identity (recreates the untracked local file):
