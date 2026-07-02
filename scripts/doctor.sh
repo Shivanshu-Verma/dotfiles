@@ -50,6 +50,20 @@ echo "== SSH =="
 if [[ -f "$HOME/.ssh/id_ed25519" ]]; then ok "ed25519 key present"; else note "no ed25519 key"; fi
 [[ -f "$HOME/.ssh/config" ]] && ok "ssh config present" || note "no ssh config"
 
+echo "== iTerm2 =="
+if [[ -d "/Applications/iTerm.app" ]]; then
+  _dp="$HOME/Library/Application Support/iTerm2/DynamicProfiles/dotfiles.json"
+  [[ -L "$_dp" ]] && ok "dynamic profile linked" || note "dynamic profile not linked (run install.sh)"
+  [[ -r "$HOME/dotfiles/iterm2/iterm2_shell_integration.zsh" ]] && ok "shell integration script present" || note "shell integration missing"
+  if [[ "$(defaults read com.googlecode.iterm2 'Default Bookmark Guid' 2>/dev/null)" == "SHV-DOTFILES-TOKYONIGHT-0001" ]]; then
+    ok "profile is default"
+  else
+    note "profile not yet default (quit iTerm2, run iterm2/apply-global-settings.sh, or set in Settings)"
+  fi
+else
+  note "iTerm2 not installed"
+fi
+
 echo
 printf "Summary: \033[32m%d passed\033[0m, \033[33m%d notes\033[0m, \033[31m%d failed\033[0m\n" "$pass" "$warn" "$fail"
 [[ "$fail" -eq 0 ]]

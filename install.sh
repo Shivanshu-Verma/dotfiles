@@ -46,6 +46,13 @@ link "$DOTFILES/starship/starship.toml" "$HOME/.config/starship.toml"
 info "Linking Claude conventions"
 link "$DOTFILES/claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
 
+# --- iTerm2 dynamic profile (auto-loaded live by iTerm2) --------------------
+if [[ -d "/Applications/iTerm.app" ]]; then
+  info "Linking iTerm2 dynamic profile"
+  link "$DOTFILES/iterm2/Profiles.json" \
+       "$HOME/Library/Application Support/iTerm2/DynamicProfiles/dotfiles.json"
+fi
+
 # --- Seed ~/.gitconfig.local (untracked identity) --------------------------
 if [[ ! -f "$HOME/.gitconfig.local" ]]; then
   info "Seeding ~/.gitconfig.local from existing git identity"

@@ -9,10 +9,11 @@
 #   functions  -> shell functions
 #   completion -> compinit (cached) + tool completions
 #   prompt     -> starship + zoxide + fzf initialization (last, so it wins)
+#   iterm2     -> iTerm2 shell integration + word-nav keybindings
 
 ZSH_CONFIG_DIR="${HOME}/dotfiles/zsh"
 
-for module in exports paths aliases functions completion prompt; do
+for module in exports paths aliases functions completion prompt iterm2; do
   file="${ZSH_CONFIG_DIR}/${module}.zsh"
   [[ -r "$file" ]] && source "$file"
 done
