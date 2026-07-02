@@ -53,5 +53,10 @@ docs/                   AUDIT, DESIGN, ALIASES, SECURITY
 - Edit a tracked file (e.g. `zsh/aliases.zsh`); the symlink means it's live immediately.
 - Personal identity lives in `~/.gitconfig.local` (untracked). Never commit secrets.
 
-See [docs/ALIASES.md](docs/ALIASES.md) for the alias/function cheat-sheet and
-[docs/SECURITY.md](docs/SECURITY.md) for the security model.
+## Docs
+- [docs/REPLICATION.md](docs/REPLICATION.md) — **rebuild this setup on a new laptop** (Intel→Apple Silicon safe)
+- [docs/ROADMAP.md](docs/ROADMAP.md) — detailed recommendations & future work
+- [docs/ALIASES.md](docs/ALIASES.md) — alias/function cheat-sheet
+- [docs/SECURITY.md](docs/SECURITY.md) — security model
+- [docs/ITERM2.md](docs/ITERM2.md) — terminal setup
+- [docs/AUDIT.md](docs/AUDIT.md) · [docs/DESIGN.md](docs/DESIGN.md) — original audit & design

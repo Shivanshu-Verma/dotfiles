@@ -31,20 +31,32 @@ brew "lazygit"      # git TUI
 brew "htop"         # process viewer
 brew "tmux"         # terminal multiplexer
 brew "neovim"       # editor
+brew "fastfetch"    # system info (fast neofetch)
 
 # Version managers
-brew "pyenv"        # python versions
-brew "fnm"          # node versions
+brew "pyenv"        # python versions  (NB: run `pyenv install 3.13` after — see REPLICATION.md)
+brew "fnm"          # node versions    (NB: run `fnm install --lts` after)
 
 # Kubernetes
+# NB: on THIS machine kubectl currently comes bundled with Docker Desktop, not
+# brew. Keeping the formula makes kubectl reproducible & independent of Docker.
 brew "kubernetes-cli"   # kubectl
 
-# Fonts + apps
+# Fonts
 cask "font-jetbrains-mono"
 cask "font-jetbrains-mono-nerd-font"
+
+# GUI apps — currently installed on this machine (some were installed manually;
+# listed here so `brew bundle` reproduces them on the new laptop).
 cask "iterm2"
-cask "obsidian"
+cask "visual-studio-code"
+cask "docker"               # Docker Desktop (also provides kubectl)
 cask "postman"
+cask "dbeaver-community"    # database GUI
+cask "obsidian"
+cask "slack"
+cask "google-chrome"
+cask "claude"              # Claude desktop app
 cask "spotify"
 
 # ============================ RECOMMENDED (opt-in) =========================
