@@ -76,3 +76,6 @@ fi
 alias myip='curl -s https://ipinfo.io/ip; echo'
 alias ports='lsof -iTCP -sTCP:LISTEN -n -P'   # what's listening locally
 alias week='date +%V'
+alias flushdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
+alias hidefiles="defaults write com.apple.finder AppleShowAllFiles YES && killall Finder"
+alias showfiles="defaults write com.apple.finder AppleShowAllFiles NO && killall Finder"
