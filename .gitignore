@@ -1,0 +1,4 @@
+# machine-local, never commit
+.gitconfig.local
+*.bak
+.DS_Store

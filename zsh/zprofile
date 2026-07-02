@@ -1,0 +1,10 @@
+# ~/.zprofile — login shells (runs once at login, before .zshrc)
+# Keep this minimal: environment that must exist for both login and non-login
+# tools (e.g. things launched by GUI apps) lives here.
+
+# --- Homebrew (arch-aware: Intel => /usr/local, Apple Silicon => /opt/homebrew)
+if [[ -x /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -x /usr/local/bin/brew ]]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi

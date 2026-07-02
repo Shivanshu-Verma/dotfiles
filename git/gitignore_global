@@ -1,0 +1,58 @@
+# Global gitignore — applies to every repo (core.excludesfile).
+# Keep project-specific ignores in each repo's own .gitignore.
+
+# --- macOS ---
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# --- Editors / IDEs ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.netrwhist
+*.sublime-workspace
+
+# --- Environment / secrets ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.direnv/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# --- Node ---
+node_modules/
+npm-debug.log*
+yarn-error.log
+.pnpm-debug.log*
+
+# --- Go ---
+bin/
+*.test
+*.out
+vendor/
+
+# --- Logs / misc ---
+*.log
+.cache/
+tmp/
+coverage/

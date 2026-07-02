@@ -1,0 +1,32 @@
+# Recommended VS Code extensions for backend / cloud-native work.
+# Install all with:  scripts/vscode-extensions.sh   (or manually via
+#   xargs -n1 code --install-extension < vscode/extensions.txt )
+# Requires the `code` CLI on PATH (install.sh sets this up).
+
+# --- Core language support ---
+golang.go
+ms-python.python
+ms-python.vscode-pylance
+charliermarsh.ruff
+ms-python.debugpy
+
+# --- Containers / Kubernetes / Cloud ---
+ms-azuretools.vscode-docker
+ms-kubernetes-tools.vscode-kubernetes-tools
+hashicorp.terraform
+redhat.vscode-yaml
+
+# --- Git / productivity ---
+eamodio.gitlens
+mhutchie.git-graph
+usernamehw.errorlens
+streetsidesoftware.code-spell-checker
+editorconfig.editorconfig
+
+# --- Data / API ---
+ms-ossdata.vscode-postgresql
+humao.rest-client
+
+# --- Remote / infra ---
+ms-vscode-remote.remote-ssh
+ms-vscode-remote.remote-containers

@@ -1,0 +1,13 @@
+# <type>(<scope>): <subject>   ← 50 chars max, imperative mood
+#
+# <body>  ← wrap at 72 chars. Explain *what* and *why*, not *how*.
+#
+# <footer>  ← e.g. "Closes #123", "BREAKING CHANGE: ..."
+#
+# Conventional Commit types:
+#   feat     new feature            fix      bug fix
+#   docs     documentation          style    formatting (no code change)
+#   refactor code change, no fix/feat        perf   performance
+#   test     tests                  build    build system / deps
+#   ci       CI config              chore    misc / tooling
+#   revert   revert a previous commit

@@ -1,0 +1,22 @@
+# ~/.zshrc — interactive shells
+# This file is intentionally a *loader only*. All real configuration lives in
+# small, single-purpose modules under ~/dotfiles/zsh/ (symlinked here).
+#
+# Load order matters:
+#   exports    -> environment variables and tool configuration
+#   paths      -> PATH + language version managers (single source of truth)
+#   aliases    -> command aliases
+#   functions  -> shell functions
+#   completion -> compinit (cached) + tool completions
+#   prompt     -> starship + zoxide + fzf initialization (last, so it wins)
+
+ZSH_CONFIG_DIR="${HOME}/dotfiles/zsh"
+
+for module in exports paths aliases functions completion prompt; do
+  file="${ZSH_CONFIG_DIR}/${module}.zsh"
+  [[ -r "$file" ]] && source "$file"
+done
+unset module file
+
+# Machine-local overrides that should never be committed (optional).
+[[ -r "${HOME}/.zshrc.local" ]] && source "${HOME}/.zshrc.local"

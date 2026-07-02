@@ -1,0 +1,82 @@
+# ~/.gitconfig — tracked, shareable git configuration.
+# Personal identity + signing keys live in ~/.gitconfig.local (NOT tracked),
+# pulled in via the [include] at the bottom.
+
+[init]
+	defaultBranch = main
+
+[pull]
+	ff = only              # never create surprise merge commits on pull
+
+[fetch]
+	prune = true           # delete local refs for branches deleted on remote
+	prunetags = true
+
+[push]
+	default = current
+	autoSetupRemote = true # `git push` on a new branch just works
+	followTags = true
+
+[rebase]
+	autoStash = true
+	autosquash = true
+
+[merge]
+	conflictstyle = zdiff3 # clearer 3-way conflict markers
+	ff = false
+
+[diff]
+	colorMoved = zebra     # highlight moved lines distinctly
+	algorithm = histogram
+	renames = copies
+	mnemonicPrefix = true
+
+[branch]
+	sort = -committerdate  # most recent branches first in `git branch`
+
+[column]
+	ui = auto
+
+[color]
+	ui = auto
+
+[core]
+	editor = nvim
+	excludesfile = ~/.gitignore_global
+	pager = less -RFX
+	# If you later `brew install git-delta`, switch the pager to delta:
+	#   [core] pager = delta
+	#   [interactive] diffFilter = delta --color-only
+	#   [delta] navigate = true, line-numbers = true, side-by-side = true
+
+[commit]
+	template = ~/.gitmessage
+	verbose = true         # show the diff in the commit editor
+
+[credential]
+	helper = osxkeychain
+
+[help]
+	autocorrect = prompt
+
+[rerere]
+	enabled = true         # remember conflict resolutions
+
+# --- Aliases (complement, don't duplicate, the shell git aliases) ---------
+[alias]
+	st = status -sb
+	co = checkout
+	sw = switch
+	br = branch
+	ci = commit
+	unstage = restore --staged
+	last = log -1 HEAD --stat
+	lg = log --graph --oneline --decorate --all
+	amend = commit --amend --no-edit
+	undo = reset --soft HEAD~1
+	wip = !git add -A && git commit -m 'wip'
+	aliases = config --get-regexp '^alias\\.'
+
+# --- Personal identity / machine-local settings (untracked) ---------------
+[include]
+	path = ~/.gitconfig.local

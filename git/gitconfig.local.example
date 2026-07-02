@@ -1,0 +1,17 @@
+# ~/.gitconfig.local — machine-local, NOT committed to the dotfiles repo.
+# Copy this to ~/.gitconfig.local and fill in your identity.
+# install.sh seeds it automatically from your existing git config if present.
+
+[user]
+	name = Your Name
+	email = you@example.com
+	# For SSH commit signing (optional):
+	# signingkey = ~/.ssh/id_ed25519.pub
+
+# Optional: sign all commits/tags with your SSH key.
+# [gpg]
+#	format = ssh
+# [commit]
+#	gpgsign = true
+# [tag]
+#	gpgsign = true
