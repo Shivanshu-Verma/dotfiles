@@ -132,5 +132,14 @@
   // PERFORMANCE / CONSISTENCY
   // =========================
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "javascript.updateImportsOnFileMove.enabled": "always"
+  "javascript.updateImportsOnFileMove.enabled": "always",
+
+  // =========================
+  // SESSION RESTORE
+  // =========================
+  "window.restoreWindows": "all",
+  "workbench.editor.restoreViewState": true,
+  "files.hotExit": "onExitAndWindowClose",
+  "terminal.integrated.enablePersistentSessions": true
+
 }
