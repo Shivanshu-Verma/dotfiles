@@ -2,8 +2,8 @@
 # ---------------------------------------------------------------------------
 
 # --- Editor / pager -------------------------------------------------------
-export EDITOR="nvim"
-export VISUAL="nvim"
+export EDITOR="nano"
+export VISUAL="nano"
 export PAGER="less"
 # -R: render colors, -F: quit if one screen, -X: don't clear screen
 export LESS="-RFX"
