@@ -16,6 +16,7 @@ brew "curl"
 brew "wget"
 brew "jq"
 brew "tree"
+brew "poppler"      # PDF utilities (pdftotext, pdfinfo …)
 
 # Modern replacements
 brew "bat"          # cat with syntax highlighting
@@ -42,6 +43,9 @@ brew "fnm"          # node versions    (NB: run `fnm install --lts` after)
 # brew. Keeping the formula makes kubectl reproducible & independent of Docker.
 brew "kubernetes-cli"   # kubectl
 
+# Cloud
+brew "awscli"       # AWS CLI
+
 # Fonts
 cask "font-jetbrains-mono"
 cask "font-jetbrains-mono-nerd-font"
@@ -58,6 +62,8 @@ cask "slack"
 cask "google-chrome"
 cask "claude"              # Claude desktop app
 cask "spotify"
+cask "whatsapp"            # WhatsApp desktop
+cask "wispr-flow"          # voice dictation
 
 # ============================ RECOMMENDED (opt-in) =========================
 # Uncomment to install; see docs/DESIGN.md for rationale.
@@ -82,7 +88,6 @@ cask "spotify"
 # brew "stern"              # multi-pod log tailing
 
 # --- Cloud / IaC ---
-# brew "awscli"
 # brew "terraform"
 # cask "google-cloud-sdk"
 

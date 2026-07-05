@@ -30,3 +30,7 @@ humao.rest-client
 # --- Remote / infra ---
 ms-vscode-remote.remote-ssh
 ms-vscode-remote.remote-containers
+
+# --- Currently installed (added from live machine) ---
+dbaeumer.vscode-eslint
+esbenp.prettier-vscode
