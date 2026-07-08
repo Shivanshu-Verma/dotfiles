@@ -16,6 +16,11 @@ also works on Apple Silicon.
 
 ## Setup
 
+> 📖 **Replicating on a new laptop?** Read **[docs/REPLICATION.md](docs/REPLICATION.md)**
+> first — it's the complete, in-order guide (with a tickable "automated vs. manual"
+> checklist in §5a and an Intel → Apple Silicon section). The steps below are the
+> condensed version.
+
 Pick **one** path. Both leave you with the same working environment; the manual
 follow-up is identical (and small). Everything is non-destructive — existing
 files are backed up before anything is symlinked.
