@@ -27,6 +27,10 @@ brew "fzf"          # fuzzy finder
 brew "zoxide"       # smarter cd
 brew "starship"     # prompt
 
+# Zsh plugins
+brew "zsh-autosuggestions"       # inline greyed-out command suggestions
+brew "zsh-syntax-highlighting"   # colorize valid/invalid commands as you type
+
 # Dev tooling
 brew "lazygit"      # git TUI
 brew "htop"         # process viewer

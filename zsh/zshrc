@@ -6,14 +6,16 @@
 #   exports    -> environment variables and tool configuration
 #   paths      -> PATH + language version managers (single source of truth)
 #   aliases    -> command aliases
+#   node       -> Node.js / NestJS workflow aliases
 #   functions  -> shell functions
 #   completion -> compinit (cached) + tool completions
 #   prompt     -> starship + zoxide + fzf initialization (last, so it wins)
 #   iterm2     -> iTerm2 shell integration + word-nav keybindings
+#   plugins    -> zsh-autosuggestions + syntax-highlighting (must be last)
 
 ZSH_CONFIG_DIR="${HOME}/dotfiles/zsh"
 
-for module in exports paths aliases functions completion prompt iterm2; do
+for module in exports paths aliases node functions completion prompt iterm2 plugins; do
   file="${ZSH_CONFIG_DIR}/${module}.zsh"
   [[ -r "$file" ]] && source "$file"
 done
