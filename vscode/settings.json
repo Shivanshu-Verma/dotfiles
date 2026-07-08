@@ -34,7 +34,6 @@
   ],
 
   "eslint.format.enable": false,
-  "prettier.requireConfig": true,
 
   // =====================
   // LANGUAGE OVERRIDES
@@ -60,16 +59,16 @@
   "files.trimFinalNewlines": true,
   "files.eol": "\n",
 
-  "files.exclude": {
-    "**/.git": true,
-    "**/__pycache__": true,
-    "**/.pytest_cache": true,
-    "**/.mypy_cache": true,
-    "**/.ruff_cache": true,
-    "**/node_modules": true,
-    "**/dist": true,
-    "**/build": true
-  },
+  // "files.exclude": {
+  //   "**/.git": true,
+  //   "**/__pycache__": true,
+  //   "**/.pytest_cache": true,
+  //   "**/.mypy_cache": true,
+  //   "**/.ruff_cache": true,
+  //   "**/node_modules": true,
+  //   "**/dist": true,
+  //   "**/build": true
+  // },
 
   // =====================
   // TERMINAL
@@ -140,6 +139,10 @@
   "window.restoreWindows": "all",
   "workbench.editor.restoreViewState": true,
   "files.hotExit": "onExitAndWindowClose",
-  "terminal.integrated.enablePersistentSessions": true
-
+  "terminal.integrated.enablePersistentSessions": true,
+  "prettier.bracketSameLine": true,
+  "prettier.jsxSingleQuote": true,
+  "prettier.experimentalTernaries": true,
+  "files.autoSave": "onFocusChange",
+  "files.autoSaveWhenNoErrors": true
 }
