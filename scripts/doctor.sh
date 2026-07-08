@@ -25,13 +25,31 @@ link_ok "$HOME/.claude/CLAUDE.md" "dotfiles/claude/CLAUDE.md"
 echo "== Interactive shell (fresh) =="
 # Run a fresh interactive zsh and inspect the resulting environment.
 probe() { zsh -i -c "$1" 2>/dev/null; }
-[[ "$(probe 'echo $HISTSIZE')" == "50000" ]] && ok "exports loaded (HISTSIZE)" || bad "exports not loaded"
+# NB: grep (not exact ==) so iTerm2 shell-integration escape codes emitted on
+# stdout by the probe's interactive shell don't cause a false negative.
+probe 'echo $HISTSIZE' | grep -q 50000 && ok "exports loaded (HISTSIZE)" || bad "exports not loaded"
 probe 'alias ll' | grep -q eza && ok "aliases loaded (ll -> eza)" || bad "aliases not loaded"
 probe 'type mkcd' | grep -q function && ok "functions loaded (mkcd)" || bad "functions not loaded"
 probe 'echo $PATH' | tr ':' '\n' | grep -q "$HOME/.local/bin" && ok "PATH contains ~/.local/bin" || bad "PATH missing ~/.local/bin"
 probe 'echo $PROMPT' | grep -qi starship && ok "starship prompt active" || note "starship not detected in \$PROMPT (may still work)"
 probe 'type __zoxide_z' | grep -q function && ok "zoxide active (z)" || note "zoxide not active"
 probe 'type fzf-history-widget' | grep -q 'function\|widget' && ok "fzf keybindings active" || note "fzf keybindings not detected"
+
+echo "== Zsh plugins & Node module =="
+# Detect by shell-function presence (robust to iTerm2 escape codes on stdout).
+probe 'type _zsh_autosuggest_start' | grep -q function && ok "zsh-autosuggestions active" || note "zsh-autosuggestions not active (run: brew bundle)"
+probe 'type _zsh_highlight'         | grep -q function && ok "zsh-syntax-highlighting active" || note "zsh-syntax-highlighting not active (run: brew bundle)"
+if probe 'command -v npm' | grep -q npm; then
+  probe 'alias nr' | grep -q 'npm run' && ok "node.zsh aliases loaded (nr -> npm run)" || bad "node.zsh aliases not loaded"
+else
+  note "node aliases skipped — no npm yet (run: fnm install --lts)"
+fi
+
+echo "== Node / package managers =="
+probe 'command -v corepack' | grep -q corepack && ok "corepack present" || note "corepack not found (comes with Node)"
+probe 'command -v pnpm'     | grep -q pnpm     && ok "pnpm enabled (corepack)" || note "pnpm not enabled (run: corepack enable)"
+probe 'command -v yarn'     | grep -q yarn     && ok "yarn enabled (corepack)" || note "yarn not enabled (run: corepack enable)"
+probe 'command -v nest'     | grep -q nest     && ok "NestJS CLI present" || note "nest CLI not installed (run: pnpm add -g @nestjs/cli)"
 
 echo "== Tools on PATH =="
 for t in git gh eza bat fd rg fzf zoxide starship lazygit tmux nvim kubectl docker claude pyenv fnm node jq; do
