@@ -55,6 +55,9 @@ A few things can’t be scripted (language versions install on demand; keys and
 logins are personal). Run these, then reload:
 
 ```bash
+# Git identity — install.sh seeds ~/.gitconfig.local with PLACEHOLDERS; set yours:
+printf '[user]\n\tname = Your Name\n\temail = you@example.com\n' > ~/.gitconfig.local
+
 fnm install --lts && fnm default lts-latest    # Node (brew installs fnm, not Node)
 corepack enable                                # activate pnpm / yarn
 pyenv install 3.13 && pyenv global 3.13        # Python (skip if unused)
