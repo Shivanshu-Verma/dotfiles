@@ -54,3 +54,8 @@ export GOBIN="${GOPATH}/bin"
 
 # pyenv root (default location)
 export PYENV_ROOT="${HOME}/.pyenv"
+
+# pnpm home (macOS default). Global installs (`pnpm add -g …`, e.g. the Nest
+# CLI) land in $PNPM_HOME/bin, which paths.zsh puts on PATH. Set here (portable,
+# $HOME-based) so we never need pnpm's own `pnpm setup` block in .zshrc.
+export PNPM_HOME="${HOME}/Library/pnpm"

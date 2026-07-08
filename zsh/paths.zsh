@@ -9,6 +9,7 @@ typeset -U path PATH
 # most tools, but we guard the important ones for cleanliness.
 path=(
   "$HOME/.local/bin"          # pipx, claude, user-installed CLIs
+  "$PNPM_HOME/bin"            # pnpm global bins (nest, etc.) — PNPM_HOME set in exports.zsh
   "$GOBIN"                    # go install targets (if Go is used)
   "$PYENV_ROOT/bin"           # pyenv itself
   "$HOME/.cargo/bin"          # rust (if installed)

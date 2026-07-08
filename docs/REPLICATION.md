@@ -113,6 +113,9 @@ Priority: 🔴 essential · 🟠 stack-dependent · 🟡 optional.
       (brew installs fnm, the manager — not Node itself).
 - [ ] **4. ○ 🔴 corepack** — `corepack enable` (activates pnpm/yarn; needs Node first).
 - [ ] **5. ○ 🟠 NestJS CLI** — `pnpm add -g @nestjs/cli` (global; not in any manifest).
+      `PNPM_HOME` is pre-set by `zsh/exports.zsh` and its bin dir is on PATH via
+      `zsh/paths.zsh`, so **don't run `pnpm setup`** — it would append a
+      non-portable block to `.zshrc`. Just install and the CLI is on PATH.
 - [ ] **6. ○ 🟠 Python** — `pyenv install 3.13 && pyenv global 3.13`.
 - [ ] **7. ◑ 🔴 SSH + Keychain** — `security-setup.sh` runs inside `bootstrap.sh`
       (answer `y`): generates the ed25519 key, writes `~/.ssh/config`, moves git

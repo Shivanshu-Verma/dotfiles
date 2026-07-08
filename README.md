@@ -66,7 +66,7 @@ printf '[user]\n\tname = Your Name\n\temail = you@example.com\n' > ~/.gitconfig.
 fnm install --lts && fnm default lts-latest    # Node (brew installs fnm, not Node)
 corepack enable                                # activate pnpm / yarn
 pyenv install 3.13 && pyenv global 3.13        # Python (skip if unused)
-pnpm add -g @nestjs/cli                        # NestJS CLI (skip if unused)
+pnpm add -g @nestjs/cli                        # NestJS CLI (skip if unused; no `pnpm setup` needed — PNPM_HOME is preconfigured)
 
 pbcopy < ~/.ssh/id_ed25519.pub                 # then paste into GitHub → SSH keys
 gh auth login                                  # authenticate the GitHub CLI
