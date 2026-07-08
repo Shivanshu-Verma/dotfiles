@@ -90,35 +90,48 @@ built arch-aware:
 
 ## 5. New-machine checklist (in order)
 
-### 5a. The map — what `install.sh` does NOT do (tick these off)
+### 5a. The map — automated vs. manual (tick these off)
 
-`install.sh` only **symlinks config** (zsh, git, tmux, starship, CLAUDE.md,
-VS Code settings + `code` CLI, iTerm2 profile) and seeds `~/.gitconfig.local`.
-It installs **no packages** and runs **no setup**. Everything below is manual.
-Priority: 🔴 essential · 🟠 recommended / stack-dependent · 🟡 optional.
+On a fresh Mac the entry point is **`bootstrap.sh`** (one `curl` command). It
+installs Xcode CLT + Homebrew, clones this repo, then — via two `y/N` prompts —
+runs `brew bundle` (all packages) and `security-setup.sh` (SSH key + Keychain),
+and in between runs **`install.sh`**, which symlinks every config file, links the
+VS Code `code` CLI + settings, links the iTerm2 profile, and seeds
+`~/.gitconfig.local`.
 
-- [ ] **1. 🔴 Install packages** — `brew bundle --file ~/dotfiles/Brewfile`
-      (pulls starship, zsh-autosuggestions/syntax-highlighting, fnm, all CLI + apps)
-- [ ] **2. 🔴 Fix git identity** — on a fresh Mac `~/.gitconfig.local` is seeded
-      with *placeholders*; write your real name/email (see step 4 in §5b below)
-- [ ] **3. 🔴 Install Node** — `fnm install --lts && fnm default lts-latest`
-      (Brewfile ships fnm, not Node itself)
-- [ ] **4. 🔴 Enable corepack** — `corepack enable` (activates pnpm/yarn; needs Node first)
-- [ ] **5. 🟠 NestJS CLI** — `pnpm add -g @nestjs/cli` (global; not in any manifest)
-- [ ] **6. 🟠 Install Python** — `pyenv install 3.13 && pyenv global 3.13`
-- [ ] **7. 🔴 SSH key + Keychain** — `bash ~/dotfiles/scripts/security-setup.sh`,
-      then paste `~/.ssh/id_ed25519.pub` into GitHub → SSH keys
-- [ ] **8. 🟠 GitHub CLI login** — `gh auth login`
-- [ ] **9. 🟡 VS Code extensions** — `grep -v '^#' ~/dotfiles/vscode/extensions.txt | grep . | xargs -n1 code --install-extension`
-- [ ] **10. 🟡 tmux plugins** — clone TPM to `~/.tmux/plugins/tpm`, then `prefix + I` in tmux
-- [ ] **11. 🟡 macOS defaults** — `bash ~/dotfiles/macos/defaults.sh` (log out/in after)
-- [ ] **12. 🟡 iTerm2 app settings** — quit iTerm2, `bash ~/dotfiles/iterm2/apply-global-settings.sh`
-- [ ] **13. 🔴 Reload shell** — `exec zsh` (or open a new terminal)
-- [ ] **14. 🟡 App logins / data** — Slack, Spotify, Obsidian vault, Postman & DBeaver connections
+So if you run `bootstrap.sh` and answer `y` to both prompts, a good chunk is
+already done. Each step below is tagged:
+**✅ auto** (bootstrap/install did it) · **◑ finish** (script set it up; you do one last thing) · **○ manual** (all you).
+Priority: 🔴 essential · 🟠 stack-dependent · 🟡 optional.
 
-> **Tip:** running `bootstrap.sh` (not raw `install.sh`) on a fresh Mac collapses
-> steps **1** and **7** into y/N prompts. Steps 3–6 and 8–14 remain manual either way.
-> Validate the result any time with `bash ~/dotfiles/scripts/doctor.sh`.
+- [ ] **1. ✅ 🔴 Packages** — `brew bundle` runs inside `bootstrap.sh` (answer `y`):
+      starship, zsh-autosuggestions/syntax-highlighting, fnm, all CLI + apps.
+      *Only manual if you ran `install.sh` alone:* `brew bundle --file ~/dotfiles/Brewfile`.
+- [ ] **2. ◑ 🔴 Git identity** — `install.sh` creates `~/.gitconfig.local`, but on a
+      fresh Mac with *placeholder* name/email. Edit in your real values (see §5b step 4).
+- [ ] **3. ○ 🔴 Node** — `fnm install --lts && fnm default lts-latest`
+      (brew installs fnm, the manager — not Node itself).
+- [ ] **4. ○ 🔴 corepack** — `corepack enable` (activates pnpm/yarn; needs Node first).
+- [ ] **5. ○ 🟠 NestJS CLI** — `pnpm add -g @nestjs/cli` (global; not in any manifest).
+- [ ] **6. ○ 🟠 Python** — `pyenv install 3.13 && pyenv global 3.13`.
+- [ ] **7. ◑ 🔴 SSH + Keychain** — `security-setup.sh` runs inside `bootstrap.sh`
+      (answer `y`): generates the ed25519 key, writes `~/.ssh/config`, moves git
+      credentials to Keychain. **You still upload the public key to GitHub**
+      (`pbcopy < ~/.ssh/id_ed25519.pub` → GitHub → SSH keys).
+- [ ] **8. ○ 🟠 GitHub CLI** — `gh auth login`.
+- [ ] **9. ○ 🟡 VS Code extensions** — `install.sh` links the `code` CLI + settings but
+      not extensions: `grep -v '^#' ~/dotfiles/vscode/extensions.txt | grep . | xargs -n1 code --install-extension`.
+- [ ] **10. ○ 🟡 tmux plugins** — clone TPM to `~/.tmux/plugins/tpm`, then `prefix + I` in tmux.
+- [ ] **11. ○ 🟡 macOS defaults** — `bash ~/dotfiles/macos/defaults.sh` (log out/in after).
+- [ ] **12. ◑ 🟡 iTerm2 app settings** — `install.sh` links the profile; to make it default
+      + apply app prefs, quit iTerm2 and run `bash ~/dotfiles/iterm2/apply-global-settings.sh`.
+- [ ] **13. ○ 🔴 Reload shell** — `exec zsh` (or open a new terminal).
+- [ ] **14. ○ 🟡 App logins / data** — Slack, Spotify, Obsidian vault, Postman & DBeaver connections.
+
+> **Bottom line:** via `bootstrap.sh`, steps **1** and **7** are automated and
+> **2** / **12** are half-done by `install.sh`. The genuinely do-it-yourself steps
+> are **3–6, 8–11, 13, 14** — mostly language versions, app logins, and opt-in
+> tweaks. Validate anytime with `bash ~/dotfiles/scripts/doctor.sh`.
 
 ### 5b. The commands (copy-paste runbook)
 
