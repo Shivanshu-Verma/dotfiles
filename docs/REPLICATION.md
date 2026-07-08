@@ -120,6 +120,8 @@ gh auth login                            # authenticate GitHub CLI
 # 6. Language versions (managers came from brew; build the versions):
 pyenv install 3.13 && pyenv global 3.13
 fnm install --lts && fnm default lts-latest
+corepack enable                          # activate pnpm/yarn (bundled with Node)
+pnpm add -g @nestjs/cli                   # NestJS CLI (global; not in Brewfile)
 
 # 7. macOS system settings (trackpad, keyboard, Finder, Dock):
 bash ~/dotfiles/macos/defaults.sh
@@ -143,8 +145,8 @@ Then sign into apps (Slack, Spotify, 1Password, etc.) and restore app data
 ## 6. Before you hand back the old laptop
 
 ```bash
-# Make sure nothing is uncommitted, and PUSH the repo (biggest gap right now:
-# the dotfiles repo has NO remote yet — see ROADMAP.md D1).
+# Make sure nothing is uncommitted, and PUSH the repo. The remote is
+# https://github.com/Shivanshu-Verma/dotfiles (public) — keep it in sync.
 cd ~/dotfiles && git status && git push
 
 # Keep a capture of anything not in the repo:
@@ -153,6 +155,7 @@ code --list-extensions > ~/dotfiles/vscode/extensions.installed.txt  # if you ad
 cp ~/.ssh/id_ed25519* /somewhere-safe/    # ONLY if you want the SAME key (else regenerate)
 ```
 
-> The single most important step: **push `~/dotfiles` to GitHub.** Until it's on
-> a remote, none of this reaches the new laptop. Everything else in this doc
-> assumes the repo is clonable.
+> The single most important habit: **keep `~/dotfiles` pushed to GitHub.** The
+> remote exists, but a fresh laptop only clones what's been *pushed* — always
+> `git push` before you hand back the old machine. Everything else in this doc
+> assumes the remote is current.

@@ -31,6 +31,11 @@ humao.rest-client
 ms-vscode-remote.remote-ssh
 ms-vscode-remote.remote-containers
 
-# --- Currently installed (added from live machine) ---
+# --- Node / TypeScript / NestJS ---
 dbaeumer.vscode-eslint
 esbenp.prettier-vscode
+yoavbls.pretty-ts-errors        # readable TypeScript compiler errors
+orta.vscode-jest                # Jest test runner (NestJS default)
+prisma.prisma                   # Prisma ORM schema support
+christian-kohler.npm-intellisense
+mikestead.dotenv                # .env syntax highlighting

@@ -4,7 +4,7 @@ This file is symlinked to `~/.claude/CLAUDE.md` and applies to every project
 unless a project-local `CLAUDE.md` overrides it.
 
 ## About this workstation
-- Backend / cloud-native engineer. Primary stacks: **Go, Python (Django), PostgreSQL, Docker, Kubernetes**. Frontend is secondary.
+- Backend engineer. Primary stack: **Node.js / NestJS / TypeScript, PostgreSQL, Docker**. Also work with Python and Go; some Kubernetes. Frontend is secondary.
 - macOS (Intel), zsh, Homebrew at `/usr/local`, dotfiles live in `~/dotfiles` (symlinked into `$HOME`).
 
 ## Working style
@@ -18,6 +18,13 @@ unless a project-local `CLAUDE.md` overrides it.
 - Branch off `main`; never force-push shared branches (use `--force-with-lease`).
 - Conventional Commits: `type(scope): subject`. Keep the subject ≤ 50 chars, imperative mood.
 - Confirm before pushing, opening PRs, or any outward-facing action.
+
+## Node / TypeScript / NestJS
+- Package manager: **pnpm** (via corepack). Prefer `pnpm` over `npm`/`yarn` in new projects.
+- `strict` TypeScript. Prefer explicit return types on exported functions. No `any` without a reason.
+- Lint/format with **ESLint + Prettier** (already in VS Code settings). Keep them clean before committing.
+- NestJS: follow the module/controller/provider structure; use DI, DTOs with `class-validator`, and `nest generate` for scaffolding.
+- Tests with **Jest** (Nest default). Co-locate `*.spec.ts`; test behavior, not implementation.
 
 ## Go
 - `gofmt`/`goimports` clean. Handle every error explicitly. Small interfaces. Table-driven tests.
