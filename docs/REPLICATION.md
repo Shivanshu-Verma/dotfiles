@@ -90,6 +90,38 @@ built arch-aware:
 
 ## 5. New-machine checklist (in order)
 
+### 5a. The map — what `install.sh` does NOT do (tick these off)
+
+`install.sh` only **symlinks config** (zsh, git, tmux, starship, CLAUDE.md,
+VS Code settings + `code` CLI, iTerm2 profile) and seeds `~/.gitconfig.local`.
+It installs **no packages** and runs **no setup**. Everything below is manual.
+Priority: 🔴 essential · 🟠 recommended / stack-dependent · 🟡 optional.
+
+- [ ] **1. 🔴 Install packages** — `brew bundle --file ~/dotfiles/Brewfile`
+      (pulls starship, zsh-autosuggestions/syntax-highlighting, fnm, all CLI + apps)
+- [ ] **2. 🔴 Fix git identity** — on a fresh Mac `~/.gitconfig.local` is seeded
+      with *placeholders*; write your real name/email (see step 4 in §5b below)
+- [ ] **3. 🔴 Install Node** — `fnm install --lts && fnm default lts-latest`
+      (Brewfile ships fnm, not Node itself)
+- [ ] **4. 🔴 Enable corepack** — `corepack enable` (activates pnpm/yarn; needs Node first)
+- [ ] **5. 🟠 NestJS CLI** — `pnpm add -g @nestjs/cli` (global; not in any manifest)
+- [ ] **6. 🟠 Install Python** — `pyenv install 3.13 && pyenv global 3.13`
+- [ ] **7. 🔴 SSH key + Keychain** — `bash ~/dotfiles/scripts/security-setup.sh`,
+      then paste `~/.ssh/id_ed25519.pub` into GitHub → SSH keys
+- [ ] **8. 🟠 GitHub CLI login** — `gh auth login`
+- [ ] **9. 🟡 VS Code extensions** — `grep -v '^#' ~/dotfiles/vscode/extensions.txt | grep . | xargs -n1 code --install-extension`
+- [ ] **10. 🟡 tmux plugins** — clone TPM to `~/.tmux/plugins/tpm`, then `prefix + I` in tmux
+- [ ] **11. 🟡 macOS defaults** — `bash ~/dotfiles/macos/defaults.sh` (log out/in after)
+- [ ] **12. 🟡 iTerm2 app settings** — quit iTerm2, `bash ~/dotfiles/iterm2/apply-global-settings.sh`
+- [ ] **13. 🔴 Reload shell** — `exec zsh` (or open a new terminal)
+- [ ] **14. 🟡 App logins / data** — Slack, Spotify, Obsidian vault, Postman & DBeaver connections
+
+> **Tip:** running `bootstrap.sh` (not raw `install.sh`) on a fresh Mac collapses
+> steps **1** and **7** into y/N prompts. Steps 3–6 and 8–14 remain manual either way.
+> Validate the result any time with `bash ~/dotfiles/scripts/doctor.sh`.
+
+### 5b. The commands (copy-paste runbook)
+
 ```bash
 # 1. macOS (manual, setup.md Phase 1): update, FileVault, Find My, Touch ID, strong password.
 
