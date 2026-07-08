@@ -10,6 +10,7 @@ format = """
 $directory\
 $git_branch\
 $git_status\
+$git_state\
 $golang\
 $python\
 $nodejs\
@@ -45,6 +46,12 @@ modified = "!${count}"
 staged = "+${count}"
 stashed = "*${count}"
 deleted = "✘${count}"
+
+[git_state]
+# Shows when a rebase / merge / cherry-pick / bisect is in progress, e.g.
+# "REBASING 2/5" — a guard against acting mid-operation.
+style = "bold red"
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
 
 [cmd_duration]
 min_time = 2000            # only show when a command took >2s
