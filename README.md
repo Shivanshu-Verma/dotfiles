@@ -89,6 +89,7 @@ git/                    gitconfig, gitignore_global, gitmessage, local example
 tmux/                   tmux.conf (TPM, resurrect, vi copy, mouse)
 starship/               starship.toml (minimal backend prompt)
 vscode/                 settings.json + recommended extensions.txt
+sublime/                Preferences + bundled Tokyo Night color scheme
 claude/                 CLAUDE.md global engineering conventions
 macos/                  defaults.sh (opt-in system tweaks)
 scripts/                backup.sh, doctor.sh, security-setup.sh

@@ -83,6 +83,24 @@ if [[ -d "/Applications/Visual Studio Code.app" ]]; then
   link "$DOTFILES/vscode/settings.json" "$VSCODE_USER/settings.json"
 fi
 
+# --- Sublime Text `subl` CLI (link only; app must already be installed) -----
+if [[ -d "/Applications/Sublime Text.app" && ! -x "$HOME/.local/bin/subl" ]]; then
+  info "Linking Sublime Text 'subl' CLI into ~/.local/bin"
+  mkdir -p "$HOME/.local/bin"
+  ln -sfn "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" "$HOME/.local/bin/subl"
+  printf "  → ~/.local/bin/subl\n"
+fi
+
+# --- Sublime Text user config (settings + bundled Tokyo Night scheme) -------
+SUBLIME_USER="$HOME/Library/Application Support/Sublime Text/Packages/User"
+if [[ -d "/Applications/Sublime Text.app" ]]; then
+  info "Linking Sublime Text settings"
+  link "$DOTFILES/sublime/Preferences.sublime-settings" \
+       "$SUBLIME_USER/Preferences.sublime-settings"
+  link "$DOTFILES/sublime/tokyonight_storm.sublime-color-scheme" \
+       "$SUBLIME_USER/tokyonight_storm.sublime-color-scheme"
+fi
+
 echo
 info "Done linking. Next steps (not automated):"
 cat <<'EOF'

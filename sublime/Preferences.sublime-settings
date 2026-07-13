@@ -1,0 +1,90 @@
+{
+  // Sublime Text — user preferences.
+  // Symlinked to ~/Library/Application Support/Sublime Text/Packages/User/ by
+  // install.sh. Tuned for calm, low-strain backend work; matches the Tokyo
+  // Night terminal + JetBrains Mono used elsewhere in these dotfiles.
+
+  // ---- Font -----------------------------------------------------------------
+  // JetBrains Mono is installed via the Brewfile and used in VS Code + iTerm2,
+  // so all three editors look identical. Big and comfortable at 18.
+  "font_face": "JetBrains Mono",
+  "font_size": 18,
+  "line_padding_top": 3,
+  "line_padding_bottom": 3,
+
+  // ---- Appearance -----------------------------------------------------------
+  // Adaptive theme makes the window chrome pick up the color-scheme colors, so
+  // the whole window reads as one calm Tokyo Night surface.
+  "color_scheme": "Packages/User/tokyonight_storm.sublime-color-scheme",
+  "theme": "Adaptive.sublime-theme",
+  "hardware_acceleration": "opengl",   // smoother scrolling/rendering on modern macOS
+
+  // ---- Caret / current line -------------------------------------------------
+  "caret_style": "phase",
+  "highlight_line": true,
+  "highlight_gutter": true,
+  "caret_extra_width": 1,
+
+  // ---- Layout / readability -------------------------------------------------
+  "line_numbers": true,
+  "gutter": true,
+  "margin": 2,
+  "rulers": [88, 120],                 // matches the Prettier/Black-ish rulers in VS Code
+  "draw_white_space": ["selection"],
+  "indent_guide_options": ["draw_normal", "draw_active"],
+  "bold_folder_labels": true,
+  "highlight_modified_tabs": true,
+  "show_encoding": true,
+  "show_line_endings": true,
+  "scroll_past_end": true,
+  "word_wrap": "auto",
+  "wrap_width": 0,
+
+  // Minimap is visual noise for most backend work — off by default.
+  "always_show_minimap_viewport": false,
+
+  // ---- Indentation ----------------------------------------------------------
+  "tab_size": 2,
+  "translate_tabs_to_spaces": true,    // spaces, not tabs
+  "detect_indentation": true,          // but respect a file/project that uses tabs
+  "trim_automatic_white_space": true,
+
+  // ---- File hygiene (mirrors the VS Code settings) --------------------------
+  "ensure_newline_at_eof_on_save": true,
+  "trim_trailing_white_space_on_save": "not_on_caret",
+  "default_line_ending": "unix",
+  "atomic_save": false,
+
+  // ---- Editing UX -----------------------------------------------------------
+  "auto_complete": true,
+  "auto_complete_commit_on_tab": true,
+  "tab_completion": true,
+  "auto_match_enabled": true,          // auto-close brackets/quotes
+  "find_selected_text": true,
+  "drag_text": false,
+  "copy_with_empty_selection": false,
+  "show_definitions": true,
+
+  // ---- Sidebar / indexing ---------------------------------------------------
+  // Keep noise out of the sidebar, Goto Anything, and project search.
+  "folder_exclude_patterns": [
+    ".git", "node_modules", "dist", "build", ".next", "coverage",
+    "__pycache__", ".mypy_cache", ".pytest_cache", ".ruff_cache", ".venv"
+  ],
+  "file_exclude_patterns": [
+    "*.pyc", "*.pyo", "*.map", ".DS_Store", "*.sublime-workspace"
+  ],
+  "binary_file_patterns": [
+    "node_modules/**", "dist/**", "build/**",
+    "*.min.js", "*.min.css", "*.lock",
+    "*.png", "*.jpg", "*.jpeg", "*.gif", "*.ico", "*.pdf", "*.zip"
+  ],
+  "index_files": true,
+
+  // ---- Misc -----------------------------------------------------------------
+  "spell_check": false,
+  "auto_complete_use_history": true,
+  "scroll_speed": 1.0,
+  "fade_fold_buttons": false,
+  "update_check": false
+}

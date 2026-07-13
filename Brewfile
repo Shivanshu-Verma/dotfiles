@@ -58,6 +58,7 @@ cask "font-jetbrains-mono-nerd-font"
 # listed here so `brew bundle` reproduces them on the new laptop).
 cask "iterm2"
 cask "visual-studio-code"
+cask "sublime-text"        # lightweight editor (config + Tokyo Night scheme in sublime/)
 cask "docker"               # Docker Desktop (also provides kubectl)
 cask "postman"
 cask "dbeaver-community"    # database GUI
