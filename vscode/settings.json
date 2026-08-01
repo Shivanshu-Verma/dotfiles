@@ -147,4 +147,11 @@
   "files.autoSaveWhenNoErrors": true,
   "claudeCode.disableLoginPrompt": true,
   "claudeCode.useTerminal": true,
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:gpt-4o-mini",
+  "gitlens.gitCommands.skipConfirmations": [
+    "fetch:command",
+    "stash-push:command",
+    "switch:command",
+  ],
 }

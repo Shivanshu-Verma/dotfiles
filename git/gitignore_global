@@ -56,3 +56,5 @@ vendor/
 .cache/
 tmp/
 coverage/
+
+**/.claude/settings.local.json
