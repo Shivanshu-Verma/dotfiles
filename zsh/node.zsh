@@ -16,6 +16,14 @@ if command -v npm >/dev/null 2>&1; then
   alias nx='npx'
 fi
 
+# --- DoubleTick private npm registry ----------------------------------------
+# GITLAB_NPM_TOKEN feeds the repos' .npmrc (@dt-cloud-services on GitLab). The value lives
+# in the macOS Keychain (item dt-gitlab-npm-token), never in these dotfiles.
+if [[ -z "${GITLAB_NPM_TOKEN:-}" ]] && command -v security >/dev/null 2>&1; then
+  GITLAB_NPM_TOKEN="$(security find-generic-password -s dt-gitlab-npm-token -w 2>/dev/null)" \
+    && [[ -n "$GITLAB_NPM_TOKEN" ]] && export GITLAB_NPM_TOKEN || unset GITLAB_NPM_TOKEN
+fi
+
 # --- pnpm (preferred; provided by corepack) -------------------------------
 if command -v pnpm >/dev/null 2>&1; then
   alias p='pnpm'
